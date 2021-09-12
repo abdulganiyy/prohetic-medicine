@@ -1,0 +1,271 @@
+@import "./mixins";
+
+$color-primary-light: #8fcff3;
+$color-primary-dark: #5ebbef;
+
+$color-dark-grey-1: #777;
+$color-dark-grey-2: #333;
+
+$color-light-grey-1: #ccc;
+$color-light-grey-2: #f7f7f7;
+
+.header {
+  position: relative;
+  padding: 30rem 0;
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50rem;
+    z-index: -2;
+  }
+}
+
+.headingprimary {
+  text-align: center;
+  text-transform: uppercase;
+  &_main {
+    font-size: 6rem;
+    color: $color-dark-grey-2;
+    display: inline-block;
+    letter-spacing: 3.5rem;
+    margin-bottom: 2rem;
+
+    @include respond(tab-port) {
+      font-size: 4rem;
+      letter-spacing: 1.75rem;
+    }
+  }
+
+  &_sub {
+    font-size: 3rem;
+    color: $color-dark-grey-2;
+    display: inline-block;
+    letter-spacing: 2rem;
+
+    @include respond(tab-port) {
+      font-size: 2rem;
+      letter-spacing: 1rem;
+    }
+  }
+}
+
+.header_text {
+  position: absolute;
+  @include absolutePos;
+  top: 30%;
+}
+
+//main content
+
+.main {
+  margin-top: -20rem;
+  position: relative;
+  z-index: -1;
+}
+
+.section_about {
+  padding: 10rem 0 10rem 0;
+}
+
+.section_solutions {
+  padding: 10rem 0;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.solutions_list {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.solution {
+  text-align: center;
+  background-color: white;
+  border-radius: 3px;
+  padding: 2rem;
+  box-shadow: 0 1rem 2rem rgba(#000, 0.4);
+
+  li {
+    text-transform: uppercase;
+  }
+
+  @include respond(tab-land) {
+    text-align: left;
+  }
+}
+
+//HEADINGS
+
+.heading_secondary {
+  font-size: 3.5rem;
+  display: inline-block;
+  text-transform: uppercase;
+  background: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 6rem;
+
+  &:hover {
+    box-shadow: 0 1rem 2rem rgba(#000, 0.4);
+  }
+}
+
+.heading_tertiary {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  text-transform: uppercase;
+  color: $color-dark-grey-1;
+}
+
+.heading_tertiary_two {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  text-transform: uppercase;
+  color: $color-dark-grey-1;
+}
+
+//paragraph
+
+.paragraph {
+  font-size: 1.6rem;
+  font-weight: 400;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+
+.composition {
+  position: relative;
+
+  &_photo {
+    width: 55%;
+    position: absolute;
+    height: 20rem;
+    box-shadow: 0 1rem 2rem rgba(#000, 0.4);
+    transition: all 0.5s;
+    z-index: 10;
+    cursor: pointer;
+    display: block;
+
+    &_1 {
+      top: -1rem;
+    }
+
+    &_2 {
+      top: 1rem;
+      right: 0;
+    }
+
+    &_3 {
+      top: 10rem;
+      left: 20%;
+    }
+  }
+}
+
+.composition_photo:hover {
+  transform: scale(1.1);
+  z-index: 15;
+}
+
+.composition:hover .composition_photo:not(:hover) {
+  transform: scale(0.95);
+}
+
+//UTILITY TEXT
+.center {
+  text-align: center;
+}
+
+.row {
+  max-width: 114rem;
+  margin: auto;
+
+  @include respond(tab-port) {
+    max-width: 90%;
+  }
+
+  &::after {
+    @include clearFix;
+  }
+}
+
+.two_colgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  column-gap: 2rem;
+}
+
+.three_colgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  align-items: start;
+  column-gap: 3rem;
+  row-gap: 3rem;
+
+  @include respond(tab-port) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer {
+  padding: 5rem 0;
+  background-color: #000;
+  font-size: 1.7rem;
+  font-weight: 700;
+
+  &_link {
+    &,
+    &:link,
+    &:visited {
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      color: white;
+      display: inline-block;
+    }
+
+    &:hover {
+      box-shadow: 0 1rem 2rem rgba(#000, 0.4);
+      color: seagreen;
+      transform: skewY(7deg);
+    }
+  }
+}
+
+.more {
+  padding: 10rem 0;
+
+  &_item {
+    width: 50%;
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  }
+}
+
+.link {
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.link:hover {
+  cursor: pointer;
+  color: $color-primary-light;
+}

@@ -1,0 +1,37 @@
+@mixin clearFix {
+  display: table;
+  content: "";
+  clear: both;
+}
+
+@mixin absolutePos {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin respond($break-point) {
+  @if ($break-point == phone) {
+    @media screen and (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if ($break-point == tab-port) {
+    @media screen and (max-width: 900px) {
+      @content;
+    }
+  }
+
+  @if ($break-point == tab-land) {
+    @media screen and (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if ($break-point == big-desktop) {
+    @media screen and (min-width: 1800px) {
+      @content;
+    }
+  }
+}
