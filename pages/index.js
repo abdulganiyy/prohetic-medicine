@@ -1,5 +1,7 @@
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
+import axios from "axios";
 import styles from "../styles/Home.module.scss";
 import Image from "next/image";
 import bg from "../svg.png";
@@ -7,25 +9,43 @@ import olivepack from "../olivepack.jpg";
 import honeypack from "../honeypack.jpg";
 import blackseedpack from "../blackseedpack.jpg";
 
-export default function Home() {
-  const [index, setIndex] = React.useState(0);
-  const timeOutRef = React.useRef(null);
-  const delay = 2500;
+import { ToastContainer, toast } from "react-toastify";
 
-  const resetTimeout = () => {
-    if (timeOutRef.current) {
-      timeOutRef.current = null;
-    }
+export default function Home() {
+  const [email, setEmail] = React.useState("");
+  const [errMessage, setErrMessage] = React.useState("");
+  const [successMessage, setSuccessMessage] = React.useState("");
+
+  const onChange = (e) => {
+    const {
+      target: { value },
+    } = e;
+
+    console.log(value);
+    setEmail(value);
   };
 
-  React.useEffect(() => {
-    resetTimeout();
-    timeOutRef.current = setTimeout(() => {
-      let newIndex = index >= 2 ? 0 : index + 1;
-      setIndex(newIndex);
-    }, delay);
-  });
+  const onSubmit = (e) => {
+    e.preventDefault();
 
+    if (!email) return;
+
+    console.log(email);
+    axios
+      .post("http://localhost:5000/signup", {
+        email,
+      })
+      .then((res) => {
+        console.log(res.data);
+        setSuccessMessage(res.data);
+        toast.success(successMessage);
+      });
+    // .catch((err) => {
+    //   console.log(err.response.data);
+    //   setErrMessage(err.response.data);
+    //   toast(errMessage);
+    // });
+  };
   return (
     <div>
       <Head>
@@ -55,7 +75,7 @@ export default function Home() {
       <main className={styles.main}>
         <section className={styles.section_about}>
           <div className={styles.center}>
-            <h2 className={styles.heading_secondary}>
+            <h2 className={"heading_secondary hover"}>
               PROPHETIC MEDICINE FREEBIES
             </h2>
           </div>
@@ -78,6 +98,25 @@ export default function Home() {
                   regularly sent to your email box. This list here will also get
                   changes as I come across more information.
                 </p>
+                {/* subscription form  */}
+                <div className={styles.subscribeform}>
+                  <form className={styles.form} onSubmit={onSubmit}>
+                    <div className={styles.form_group}>
+                      <input
+                        type="email"
+                        placeholder="Email Address"
+                        value={email}
+                        className={styles.form_input}
+                        onChange={(e) => onChange(e)}
+                      />
+                    </div>
+                    <div className={styles.form_group}>
+                      <button type="submit" className={styles.form_button}>
+                        SEND ME FREEBIES
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
               <div className={styles.composition}>
                 <div
@@ -252,6 +291,118 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+              <div className={styles.solution}>
+                <h3 className={styles.heading_tertiary}>SLEEPLESSNESS</h3>
+                <div>
+                  <h4 className={styles.heading_tertiary_two}>INGREDIENTS</h4>
+                  <ul className={styles.solutions_list}>
+                    <li>Warm Milk(Camel or Peak Milk or Cow Milk</li>
+                    <li>Original Honey</li>
+                  </ul>
+                  <h4 className={styles.heading_tertiary_two}>
+                    PREPARATION & DOSAGE
+                  </h4>
+                  <p>
+                    Get a short cup filled with the warm milk and add one spoon
+                    of original honey then drink one hour to sleeping time.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.solution}>
+                <h3 className={styles.heading_tertiary}>Kidney Disease</h3>
+                <div>
+                  <h4 className={styles.heading_tertiary_two}>INGREDIENTS</h4>
+                  <ul className={styles.solutions_list}>
+                    <li>BLACKSEED(SEEDS)</li>
+                  </ul>
+                  <h4 className={styles.heading_tertiary_two}>
+                    PREPARATION & DOSAGE
+                  </h4>
+                  <p>
+                    Boil the seeds in a pot for two hours to the softness of
+                    cooked beans. Extract the water and put in one place. Add
+                    honey to the cooked seeds. Eat two spoons morning,afternoon
+                    and night. Drink the water extract after eating.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.solution}>
+                <h3 className={styles.heading_tertiary}>
+                  Kidney,Heart,liver problems
+                </h3>
+                <div>
+                  <h4 className={styles.heading_tertiary_two}>INGREDIENTS</h4>
+                  <ul className={styles.solutions_list}>
+                    <li>FRESH COW BILE</li>
+                    <li>LIME</li>
+                    <li>HONEY</li>
+                  </ul>
+                  <h4 className={styles.heading_tertiary_two}>
+                    PREPARATION & DOSAGE
+                  </h4>
+                  <p>
+                    Mix all the ingredients together at the same quantity,
+                    recite suratul fatiha it and take four spoons every
+                    morning,afternoon and night.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.solution}>
+                <h3 className={styles.heading_tertiary}>Kidney Disease</h3>
+                <div>
+                  <h4 className={styles.heading_tertiary_two}>INGREDIENTS</h4>
+                  <ul className={styles.solutions_list}>
+                    <li>BLACKSEED(SEEDS)</li>
+                  </ul>
+                  <h4 className={styles.heading_tertiary_two}>
+                    PREPARATION & DOSAGE
+                  </h4>
+                  <p>
+                    Boil the seeds in a pot for two hours to the softness of
+                    cooked beans. Extract the water and put in one place. Add
+                    honey to the cooked seeds. Eat two spoons morning,afternoon
+                    and night. Drink the water extract after eating.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.solution}>
+                <h3 className={styles.heading_tertiary}>Skin Cancer</h3>
+                <div>
+                  <h4 className={styles.heading_tertiary_two}>INGREDIENTS</h4>
+                  <ul className={styles.solutions_list}>
+                    <li>BLACK SEED OIL</li>
+                  </ul>
+                  <h4 className={styles.heading_tertiary_two}>
+                    PREPARATION & DOSAGE
+                  </h4>
+                  <p>
+                    Rub your body with black seed oil after taking bath in the
+                    morning and evening.
+                  </p>
+                </div>
+              </div>
+              <div className={styles.solution}>
+                <h3 className={styles.heading_tertiary}>Rheumatism</h3>
+                <div>
+                  <h4 className={styles.heading_tertiary_two}>INGREDIENTS</h4>
+                  <ul className={styles.solutions_list}>
+                    <li>aparun powder</li>
+                    <li>honey</li>
+                    <li>shea butter</li>
+                    <li>dunu shifaa</li>
+                    <li>alo balm</li>
+                  </ul>
+                  <h4 className={styles.heading_tertiary_two}>
+                    PREPARATION & DOSAGE
+                  </h4>
+                  <p>
+                    Mix aparun powder with original honey and take two spoons in
+                    the morning,afternoon and night.Also rub dunu shifaa, alo
+                    balm and a misture of aparun powder mixed with shea butter
+                    on the affected parts.
+                  </p>
+                </div>
+              </div>
               {/* End of solutions section */}
             </div>
           </div>
@@ -267,29 +418,27 @@ export default function Home() {
               </h3>
 
               <p className={styles.paragraph}>
-                <a
-                  href="https://abdurrahman.org/arabic-learning/madina-arabic/"
-                  className={styles.link}
-                >
-                  Use the below resources for studying and mastering the Books
-                  1,2 and 3 of “Lessons in Arabic language” [as taught at the
-                  Islaamic University of Madeenah] written by Shaykh Dr. V.
-                  ‘Abdur-Raheem
-                </a>
+                Use the below resources for studying and mastering the Books 1,2
+                and 3 of “Lessons in Arabic language” [as taught at the Islaamic
+                University of Madeenah] written by Shaykh Dr. V. ‘Abdur-Raheem
               </p>
+              <Link href="https://abdurrahman.org/arabic-learning/madina-arabic/">
+                <a className={styles.link}>Visit resource</a>
+              </Link>
             </div>
           </div>
         </section>
       </main>
       <footer className={styles.footer}>
         <div className={styles.center}>
-          Made with love by{" "}
-          <a href="#" className={styles.footer_link}>
+          Website created with love by{" "}
+          <a href="https://wa.me/+23481784354" className={styles.footer_link}>
             {" "}
             Abu Taw'ameen
           </a>
         </div>
       </footer>
+      <ToastContainer />
     </div>
   );
 }
