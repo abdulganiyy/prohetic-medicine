@@ -32,7 +32,7 @@ export default function Home() {
 
     console.log(email);
     axios
-      .post("http://localhost:5000/signup", {
+      .post("https://prophetic-medicine-backend.herokuapp.com/signup", {
         email,
       })
       .then((res) => {
@@ -75,7 +75,7 @@ export default function Home() {
       <main className={styles.main}>
         <section className={styles.section_about}>
           <div className={styles.center}>
-            <h2 className={"heading_secondary hover"}>
+            <h2 className={styles.headingprimary}>
               PROPHETIC MEDICINE FREEBIES
             </h2>
           </div>
