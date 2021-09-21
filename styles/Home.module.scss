@@ -168,6 +168,7 @@ $color-light-grey-2: #f7f7f7;
 
     @include respond(tab-port) {
       width: 33%;
+      height: auto;
     }
 
     &_1 {
