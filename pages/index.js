@@ -75,7 +75,7 @@ export default function Home() {
       <main className={styles.main}>
         <section className={styles.section_about}>
           <div className={styles.center}>
-            <h2 className={styles.headingprimary}>
+            <h2 className={styles.heading_secondary}>
               PROPHETIC MEDICINE FREEBIES
             </h2>
           </div>
