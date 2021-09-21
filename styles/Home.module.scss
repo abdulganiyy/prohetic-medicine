@@ -166,6 +166,10 @@ $color-light-grey-2: #f7f7f7;
     cursor: pointer;
     display: block;
 
+    @include respond(tab-port) {
+      width: 33%;
+    }
+
     &_1 {
       top: -1rem;
     }
