@@ -50,7 +50,15 @@ export default function Home() {
     <div>
       <Head>
         <title>Prophetic Medicine | A blessing to mankind </title>
-        <meta name="description" content="Prophetic medicine blog" />
+        <meta
+          name="description"
+          content="Prophetic medicine blog | Blessing sent by Allah through Prophet Muhammad (S.A.W) "
+        />
+        <meta
+          name="keywords"
+          content="sunnah,prophetic,islam,islamic,medicine,health,solution blog,blessing"
+        />
+        <meta name="author" content="Balogun Abdulganiyy" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
           href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
@@ -122,21 +130,17 @@ export default function Home() {
                 <div
                   className={`${styles.composition_photo} ${styles.composition_photo_1}`}
                 >
-                  <Image src={honeypack} alt="Medicine photo" layout="fill" />
+                  <Image src={honeypack} alt="honey" layout="fill" />
                 </div>
                 <div
                   className={`${styles.composition_photo} ${styles.composition_photo_2}`}
                 >
-                  <Image src={olivepack} alt="Medicine photo" layout="fill" />
+                  <Image src={olivepack} alt="olive" layout="fill" />
                 </div>
                 <div
                   className={`${styles.composition_photo} ${styles.composition_photo_3}`}
                 >
-                  <Image
-                    src={blackseedpack}
-                    alt="Medicine photo"
-                    layout="fill"
-                  />
+                  <Image src={blackseedpack} alt="blackseed" layout="fill" />
                 </div>
               </div>
             </div>
