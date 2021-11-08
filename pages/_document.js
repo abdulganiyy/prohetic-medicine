@@ -22,6 +22,11 @@ export default class MyDocument extends Document {
           `,
             }}
           />
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9984053510230650"
+            crossorigin="anonymous"
+          ></script>
         </Head>
         <body>
           <Main />
